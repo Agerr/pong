@@ -1,3 +1,5 @@
+#include "./sprite.h"
+
 #include <SFML/Graphics.hpp>
 
 int main()
@@ -22,11 +24,13 @@ int main()
 
     float midWallCount = 970 / 30.f / 2.f;
 
+    // Sprite
+    Sprite sprite(775, 475);
+
     // Font
     sf::Font font;
     font.loadFromFile("../fonts/bit5x3.ttf");
 
-    // While the window is open
     while (window.isOpen())
     {
         // Events
@@ -46,14 +50,16 @@ int main()
         window.draw(wallLeft);
         window.draw(wallRight);
         
-        // Render middle wall
         for (int i = 0; i < midWallCount; i++)
         {
             wallMid.setPosition(795, 60 * i);
             window.draw(wallMid);
         }
 
-        // Display everything
+        // Render sprite
+        sprite.move();
+        sprite.render(window);
+
         window.display();
     }
 
