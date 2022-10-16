@@ -1,5 +1,7 @@
 #pragma once
 
+#include "player.h"
+
 #include <SFML/Graphics.hpp>
 
 class Sprite
@@ -7,8 +9,8 @@ class Sprite
     sf::Vector2f pos;
     sf::RectangleShape rect;
 
-    float vel_x { 7 };
-    float vel_y { 7 };
+    float vel_x { 2 };
+    float vel_y { 2 };
 
 public:
     Sprite(float pos_x, float pos_y)
@@ -20,6 +22,6 @@ public:
         rect.setFillColor(sf::Color::White);
     }
     
-    void move();
+    void move(Player player1, Player player2);
     void render(sf::RenderWindow &window);
 };

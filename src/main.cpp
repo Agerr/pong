@@ -100,7 +100,7 @@ int main()
         }
 
         // Sprite
-        sprite.move();
+        sprite.move(player1, player2);
         sprite.render(window);
 
         // Players
