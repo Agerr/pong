@@ -1,6 +1,8 @@
 #include "sprite.h"
+#include "player.h"
 
 #include <SFML/Graphics.hpp>
+#include <iostream>
 
 int main()
 {
@@ -8,6 +10,7 @@ int main()
     sf::RenderWindow window { sf::VideoMode(1600, 1000), "_test_" };
     window.setFramerateLimit(60);
     window.setVerticalSyncEnabled(true);
+    window.setKeyRepeatEnabled(false);
 
     // Walls
     sf::RectangleShape wallTop { sf::Vector2f(1600, 15) };
@@ -27,6 +30,10 @@ int main()
     // Sprite
     Sprite sprite(775, 475);
 
+    // Players
+    Player player1(30, 450);
+    Player player2(1540, 450);
+
     // Font
     sf::Font font;
     font.loadFromFile("../fonts/bit5x3.ttf");
@@ -37,14 +44,50 @@ int main()
         sf::Event event;
         while (window.pollEvent(event))
         {
-           if (event.type == sf::Event::Closed) window.close();
-           if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) window.close();
+            // Close
+            if (event.type == sf::Event::Closed) window.close();
+
+            // KeyPress
+            if (event.type == sf::Event::KeyPressed)
+            {
+                switch (event.key.code)
+                {
+                    case sf::Keyboard::Escape : window.close(); break;
+
+                    case sf::Keyboard::W    :   player1.upFlag = true; break;
+                    case sf::Keyboard::S    :   player1.downFlag = true; break;
+                    case sf::Keyboard::Up   :   player2.upFlag = true; break;
+                    case sf::Keyboard::Down :   player2.downFlag = true; break;
+
+                    default : break;
+                }
+            }
+
+            // KeyRelease
+            if (event.type == sf::Event::KeyReleased)
+            {
+                switch (event.key.code)
+                {
+                    case sf::Keyboard::W    :   player1.upFlag = false; break;
+                    case sf::Keyboard::S    :   player1.downFlag = false; break;
+                    case sf::Keyboard::Up   :   player2.upFlag = false; break;
+                    case sf::Keyboard::Down :   player2.downFlag = false; break;
+
+                    default : break;
+                }
+            }
         }
+
+        // Move players
+        if (player1.upFlag) player1.moveUp(5);
+        if (player1.downFlag) player1.moveDown(5);
+        if (player2.upFlag) player2.moveUp(5);
+        if (player2.downFlag) player2.moveDown(5);
 
         // Rendering
         window.clear();
 
-        // Render walls
+        // Walls
         window.draw(wallTop);
         window.draw(wallBot);
         window.draw(wallLeft);
@@ -56,9 +99,13 @@ int main()
             window.draw(wallMid);
         }
 
-        // Render sprite
+        // Sprite
         sprite.move();
         sprite.render(window);
+
+        // Players
+        player1.render(window);
+        player2.render(window);
 
         window.display();
     }
