@@ -13,11 +13,11 @@ int main()
     window.setKeyRepeatEnabled(false);
 
     // Walls
-    sf::RectangleShape wallTop { sf::Vector2f(1600, 15) };
-    sf::RectangleShape wallBot { sf::Vector2f(1600, 15) };
-    sf::RectangleShape wallLeft { sf::Vector2f(15, 1000) };
-    sf::RectangleShape wallRight { sf::Vector2f(15, 1000) };
-    sf::RectangleShape wallMid { sf::Vector2f(10, 30) };
+    sf::RectangleShape wallTop      { sf::Vector2f(1600, 15) };
+    sf::RectangleShape wallBot      { sf::Vector2f(1600, 15) };
+    sf::RectangleShape wallLeft     { sf::Vector2f(15, 1000) };
+    sf::RectangleShape wallRight    { sf::Vector2f(15, 1000) };
+    sf::RectangleShape wallMid      { sf::Vector2f(10, 30) };
 
     wallTop.setPosition(0, 0);
     wallBot.setPosition(0, 985);
@@ -32,7 +32,7 @@ int main()
 
     // Players
     Player player1(30, 450);
-    Player player2(1540, 450);
+    Player player2(1555, 450);
 
     // Font
     sf::Font font;
@@ -79,10 +79,10 @@ int main()
         }
 
         // Move players
-        if (player1.upFlag) player1.moveUp(5);
-        if (player1.downFlag) player1.moveDown(5);
-        if (player2.upFlag) player2.moveUp(5);
-        if (player2.downFlag) player2.moveDown(5);
+        if (player1.upFlag      && player1.pos.y > 30)  player1.moveUp(5);
+        if (player1.downFlag    && player1.pos.y < 870) player1.moveDown(5);
+        if (player2.upFlag      && player2.pos.y > 30)  player2.moveUp(5);
+        if (player2.downFlag    && player2.pos.y < 870) player2.moveDown(5);
 
         // Rendering
         window.clear();

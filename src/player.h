@@ -4,10 +4,11 @@
 
 class Player 
 {
-    sf::Vector2f pos;
     sf::RectangleShape rect;
 
 public:
+    sf::Vector2f pos;
+
     bool upFlag = false;
     bool downFlag = false;
 
