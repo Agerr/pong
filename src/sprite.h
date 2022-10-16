@@ -19,6 +19,7 @@ public:
         rect.setSize(sf::Vector2f(50, 50));
         rect.setFillColor(sf::Color::White);
     }
+    
     void move();
     void render(sf::RenderWindow &window);
 };
