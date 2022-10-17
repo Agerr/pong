@@ -1,6 +1,6 @@
-#include "sprite.h"
+#include "sprite.hpp"
 
-#include "player.h"
+#include "player.hpp"
 
 #include <SFML/Graphics.hpp>
 #include <iostream>
