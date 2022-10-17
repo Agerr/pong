@@ -9,8 +9,8 @@ class Sprite
     sf::Vector2f pos;
     sf::RectangleShape rect;
 
-    float vel_x { 2 };
-    float vel_y { 2 };
+    float vel_x { 5 };
+    float vel_y { 5 };
 
 public:
     Sprite(float pos_x, float pos_y)
