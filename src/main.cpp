@@ -12,6 +12,10 @@ int main()
     window.setVerticalSyncEnabled(true);
     window.setKeyRepeatEnabled(false);
 
+    // Font
+    sf::Font font;
+    font.loadFromFile("../fonts/bit5x3.ttf");
+
     // Walls
     sf::RectangleShape wallTop      { sf::Vector2f(1600, 15) };
     sf::RectangleShape wallBot      { sf::Vector2f(1600, 15) };
@@ -34,9 +38,19 @@ int main()
     Player player1(30, 450);
     Player player2(1555, 450);
 
-    // Font
-    sf::Font font;
-    font.loadFromFile("../fonts/bit5x3.ttf");
+    // Score
+    sf::Text score1;
+    sf::Text score2;
+
+    score1.setFont(font);
+    score1.setCharacterSize(200);
+    score1.setFillColor(sf::Color::White);
+    score1.setPosition(600, 0);
+
+    score2.setFont(font);
+    score2.setCharacterSize(200);
+    score2.setFillColor(sf::Color::White);
+    score2.setPosition(930, 0);
 
     while (window.isOpen())
     {
@@ -106,6 +120,12 @@ int main()
         // Players
         player1.render(window);
         player2.render(window);
+
+        // Score
+        score1.setString(std::to_string(player1.score));
+        score2.setString(std::to_string(player2.score));
+        window.draw(score1);
+        window.draw(score2);
 
         window.display();
     }

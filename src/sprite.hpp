@@ -22,6 +22,6 @@ public:
         rect.setFillColor(sf::Color::White);
     }
     
-    void move(Player player1, Player player2);
+    void move(Player &player1, Player &player2);
     void render(sf::RenderWindow &window);
 };

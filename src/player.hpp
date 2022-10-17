@@ -12,6 +12,8 @@ public:
     bool upFlag = false;
     bool downFlag = false;
 
+    int score { 0 };
+
     Player(float pos_x, float pos_y)
     {
         pos = sf::Vector2f(pos_x, pos_y);

@@ -5,12 +5,25 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
-void Sprite::move(Player player1, Player player2)
+void Sprite::move(Player &player1, Player &player2)
 {
-    // Wall Collisions
-    if (pos.x < 15 || pos.x > 1535) vel_x *= -1;
-    if (pos.y < 15 || pos.y > 935) vel_y *= -1;
+    // Score
+    if (pos.x > 1535)
+    {
+        player1.score++;
+        pos = sf::Vector2f(775, 475);
+        vel_x = -vel_x;
+    }
 
+    if (pos.x < 15)
+    {
+        player2.score++;
+        pos = sf::Vector2f(775, 475);
+        vel_x = -vel_x;
+    }
+
+    // Top and Bottom
+    if (pos.y < 15 || pos.y > 935) vel_y *= -1;
 
     // Player 1 collision
     bool inX1 { (pos.x <= (player1.pos.x + 15)) && (pos.x > (player1.pos.x + 15 + vel_x)) };
