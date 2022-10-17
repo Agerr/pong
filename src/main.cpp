@@ -93,10 +93,10 @@ int main()
         }
 
         // Move players
-        if (player1.upFlag      && player1.pos.y > 30)  player1.moveUp(5);
-        if (player1.downFlag    && player1.pos.y < 870) player1.moveDown(5);
-        if (player2.upFlag      && player2.pos.y > 30)  player2.moveUp(5);
-        if (player2.downFlag    && player2.pos.y < 870) player2.moveDown(5);
+        if (player1.upFlag      && player1.pos.y > 30)  player1.moveUp(10);
+        if (player1.downFlag    && player1.pos.y < 870) player1.moveDown(10);
+        if (player2.upFlag      && player2.pos.y > 30)  player2.moveUp(10);
+        if (player2.downFlag    && player2.pos.y < 870) player2.moveDown(10);
 
         // Rendering
         window.clear();

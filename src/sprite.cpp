@@ -12,16 +12,16 @@ void Sprite::move(Player &player1, Player &player2)
     {
         player1.score++;
         pos = sf::Vector2f(775, 475);
-        vel_x = -3;
-        vel_y = 3;
+        vel_x = -5;
+        vel_y = 5;
     }
 
     if (pos.x < 15)
     {
         player2.score++;
         pos = sf::Vector2f(775, 475);
-        vel_x = 3;
-        vel_y = -3;
+        vel_x = 5;
+        vel_y = -5;
     }
 
     // Top and Bottom
