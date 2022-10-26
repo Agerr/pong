@@ -7,7 +7,7 @@
 int main()
 {
     // Window
-    sf::RenderWindow window { sf::VideoMode(1600, 1000), "_test_" };
+    sf::RenderWindow window { sf::VideoMode(1600, 1000), "Pong" };
     window.setFramerateLimit(60);
     window.setVerticalSyncEnabled(true);
     window.setKeyRepeatEnabled(false);
